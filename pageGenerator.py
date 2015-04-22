@@ -13,11 +13,11 @@ pageContent = ""
 pageContent += "<html lang=\"en\"><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\r\n"
 pageContent += "<meta charset=\"utf-8\">"
 pageContent += "<title>" + "Works of Sven Hedin" + "</title>"
-pageContent += "<body bgcolor=\"black\">"
+pageContent += "<body bgcolor=\"eeeeee\">"
 pageContent += "<center>\r\n"
 pageContent += "<br/>"
 pageContent += "<br/>"
-pageContent += "<h1><font color=white size=7>" + "Works of Sven Hedin" + "</font></h1>\r\n"
+pageContent += "<h1><font color=black size=7>" + "Works of Sven Hedin" + "</font></h1>\r\n"
 pageContent += "<br/>"
 
 # portrait
@@ -119,18 +119,68 @@ volumeDescription = ''
 bookVolume.append([12, volumeDescription])
 
 
+# book 1 ~ 3
 for bookData in booksData:
     pageContent += "<br/>"
-    pageContent += "<h2><font color=white size=6>" + bookData[0] + "</font></h2>\r\n"
+    pageContent += "<h2><font color=black size=6>" + bookData[0] + "</font></h2>\r\n"
+    pageContent += "<h3><font color=222222 size=2>" + bookData[2] + "</font></h3>\r\n"
     for volumeData in bookData[3]:
         pageContent += "<div>"
         pageContent += "<a target=\"_blank\" href=\"" + siteUrl
-        pageContent += bookData[1] + "\\" + "V-" + str(volumeData[0])
+        pageContent += bookData[1] + "V" + str(volumeData[0])
         pageContent += ".html" + "\">"
-        pageContent += "<h2><font color=white size=5>" + "Volume " + str(volumeData[0]) + "</font></h2>\r\n"
+        pageContent += "<h2><font color=black size=5>" + "Volume " + str(volumeData[0]) + "</font></h2>\r\n"
         pageContent += "</a>"
         pageContent += "</div>\r\n"
     pageContent += "<br/>"
+
+
+
+# Trans Himalaya
+pageContent += "<br/>"
+pageContent += "<h2><font color=black size=6>" + "Trans Himalaya - A Book For Young People" + "</font></h2>\r\n"
+# volume 1
+pageContent += "<div>"
+pageContent += "<a target=\"_blank\" href=\"" + baseUrl
+pageContent += "TransHimalaya/V-1/"
+pageContent += "index.html" + "\">"
+pageContent += "<h2><font color=black size=5>" + "Volume 1" + "</font></h2>\r\n"
+pageContent += "</a>"
+pageContent += "</div>\r\n"
+# volume 2
+pageContent += "<div>"
+pageContent += "<a target=\"_blank\" href=\"" + baseUrl
+pageContent += "TransHimalaya/V-2/"
+pageContent += "index.html" + "\">"
+pageContent += "<h2><font color=black size=5>" + "Volume 2" + "</font></h2>\r\n"
+pageContent += "</a>"
+pageContent += "</div>\r\n"
+
+pageContent += "<br/>"
+
+
+# book From Pole To Pole
+pageContent += "<br/>"
+pageContent += "<h2><font color=black size=6>" + "From Pole To Pole" + "</font></h2>\r\n"
+# scan version
+pageContent += "<div>"
+pageContent += "<a target=\"_blank\" href=\"" + baseUrl
+pageContent += "FromPoleToPole/FromPoleToPole_scan/"
+pageContent += "index.html" + "\">"
+pageContent += "<h2><font color=black size=5>" + "Scan version" + "</font></h2>\r\n"
+pageContent += "</a>"
+pageContent += "</div>\r\n"
+# html version
+pageContent += "<div>"
+pageContent += "<a target=\"_blank\" href=\"" + baseUrl
+pageContent += "FromPoleToPole/FromPoleToPole_html/"
+pageContent += "index.html" + "\">"
+pageContent += "<h2><font color=black size=5>" + "Html version" + "</font></h2>\r\n"
+pageContent += "</a>"
+pageContent += "</div>\r\n"
+
+pageContent += "<br/>"
+
 
 
 pageContent += "</center>\r\n"
@@ -140,17 +190,17 @@ f.write(pageContent)
 f.close()
 
 
-# generate book pages
+# generate book pages, book 1 ~ 3
 for bookData in booksData:
         for volumeData in bookData[3]:
                 f = open("_site/" + bookData[1] + "V" + str(volumeData[0]) + ".html", 'w')
                 dir = bookData[1] + "/" + "V-" + str(volumeData[0])
                 allFiles = os.listdir(dir)
                 fileIdList = []
-                for file in allFiles:
-                        if (file.find(".jpg") > 0) and (file.find("_") < 0):
-                                id = os.path.splitext(file)[0]
-                                fileIdList.append(id)
+                for i in range(1, 1000):
+                    fileId = ("%04d" % (i))
+                    if (os.path.isfile(dir + "/" + fileId + "_m.jpg")):
+                        fileIdList.append(fileId)
                 imageFiles = []
                 for fileId in fileIdList:
                         iconFile = dir + "/" + fileId + "_s.jpg"
@@ -162,10 +212,11 @@ for bookData in booksData:
                 pageContent += "<html lang=\"en\"><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\r\n"
                 pageContent += "<meta charset=\"utf-8\">"
                 pageContent += "<title>" + bookData[0] + " Volume " + str(volumeData[0]) + "</title>"
-                pageContent += "<body bgcolor=\"black\">"
+                pageContent += "<body bgcolor=\"eeeeee\">"
 
                 pageContent += "<center>\r\n"
-                pageContent += "<h1><font color=white size=72>" + bookData[0]  + str(volumeData[0]) + "</font></h1>"
+                pageContent += "<h1><font color=black size=6>" + bookData[0] + "</font></h1>"
+                pageContent += "<h2><font color=black size=5>" + "(volume " + str(volumeData[0]) + ")" + "</font></h2>"
                 
                 count = 0
                 for imageFile in imageFiles:
@@ -188,4 +239,43 @@ for bookData in booksData:
 
                 f.write(pageContent)
                 f.close()
+
+
+
+# book "From Pole To Pole" scan version
+f = open("_site/" + "FromPoleToPole_scan" + ".html", 'w')
+dir = "FromPoleToPole/FromPoleToPole_scan"
+images = os.listdir(dir)
+images.sort()
+
+pageContent = ""	
+pageContent += "<html lang=\"en\"><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\r\n"
+pageContent += "<meta charset=\"utf-8\">"
+pageContent += "<title>"  + "From Pole To Pole" + "</title>"
+pageContent += "<body bgcolor=\"eeeeee\">"
+pageContent += "<center>\r\n"
+pageContent += "<h1><font color=black size=6>" + "From Pole To Pole" + "</font></h1>"
+                
+count = 0
+for image in images:
+    if count % 4 == 0:
+        pageContent += "<div>"
+    pageContent += "<a target=\"_blank\" href=\"" + baseUrl
+    pageContent += dir + "/" + image
+    pageContent += "\">"
+    pageContent += "<img width=\"280\" src=\"" + baseUrl
+    pageContent += dir + "/" + image
+    pageContent += "\"></a>"
+    if count % 4 == 3:
+        pageContent += "</div>\r\n"
+    count += 1
+if count % 4 <> 0:
+    pageContent += "</div>\r\n"
+pageContent += "</center>\r\n"
+pageContent += "</body>"
+pageContent += "</html>"
+
+f.write(pageContent)
+f.close()
+
 
