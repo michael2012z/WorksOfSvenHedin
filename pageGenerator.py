@@ -141,7 +141,7 @@ pageContent += "<br/>"
 pageContent += "<h2><font color=black size=6>" + "Trans Himalaya - A Book For Young People" + "</font></h2>\r\n"
 # volume 1
 pageContent += "<div>"
-pageContent += "<a target=\"_blank\" href=\"" + baseUrl
+pageContent += "<a target=\"_blank\" href=\"" + siteUrl
 pageContent += "TransHimalaya/V-1/"
 pageContent += "index.html" + "\">"
 pageContent += "<h2><font color=black size=5>" + "Volume 1" + "</font></h2>\r\n"
@@ -149,7 +149,7 @@ pageContent += "</a>"
 pageContent += "</div>\r\n"
 # volume 2
 pageContent += "<div>"
-pageContent += "<a target=\"_blank\" href=\"" + baseUrl
+pageContent += "<a target=\"_blank\" href=\"" + siteUrl
 pageContent += "TransHimalaya/V-2/"
 pageContent += "index.html" + "\">"
 pageContent += "<h2><font color=black size=5>" + "Volume 2" + "</font></h2>\r\n"
@@ -165,14 +165,14 @@ pageContent += "<h2><font color=black size=6>" + "From Pole To Pole" + "</font><
 # scan version
 pageContent += "<div>"
 pageContent += "<a target=\"_blank\" href=\"" + siteUrl
-pageContent += "FromPoleToPole/FromPoleToPole_scan/"
-pageContent += "index.html" + "\">"
+pageContent += "FromPoleToPole_scan.html"
+pageContent += "\">"
 pageContent += "<h2><font color=black size=5>" + "Scan version" + "</font></h2>\r\n"
 pageContent += "</a>"
 pageContent += "</div>\r\n"
 # html version
 pageContent += "<div>"
-pageContent += "<a target=\"_blank\" href=\"" + baseUrl
+pageContent += "<a target=\"_blank\" href=\"" + siteUrl
 pageContent += "FromPoleToPole/FromPoleToPole_html/"
 pageContent += "index.html" + "\">"
 pageContent += "<h2><font color=black size=5>" + "Html version" + "</font></h2>\r\n"
@@ -245,7 +245,7 @@ for bookData in booksData:
 # book "From Pole To Pole" scan version
 f = open("_site/" + "FromPoleToPole_scan" + ".html", 'w')
 dir = "FromPoleToPole/FromPoleToPole_scan"
-images = os.listdir(dir)
+images = os.listdir("_site/" + dir)
 images.sort()
 
 pageContent = ""	
@@ -260,10 +260,10 @@ count = 0
 for image in images:
     if count % 4 == 0:
         pageContent += "<div>"
-    pageContent += "<a target=\"_blank\" href=\"" + baseUrl
+    pageContent += "<a target=\"_blank\" href=\"" + siteUrl
     pageContent += dir + "/" + image
     pageContent += "\">"
-    pageContent += "<img width=\"280\" src=\"" + baseUrl
+    pageContent += "<img width=\"280\" src=\"" + siteUrl
     pageContent += dir + "/" + image
     pageContent += "\"></a>"
     if count % 4 == 3:
