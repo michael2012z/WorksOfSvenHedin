@@ -164,7 +164,7 @@ pageContent += "<br/>"
 pageContent += "<h2><font color=black size=6>" + "From Pole To Pole" + "</font></h2>\r\n"
 # scan version
 pageContent += "<div>"
-pageContent += "<a target=\"_blank\" href=\"" + baseUrl
+pageContent += "<a target=\"_blank\" href=\"" + siteUrl
 pageContent += "FromPoleToPole/FromPoleToPole_scan/"
 pageContent += "index.html" + "\">"
 pageContent += "<h2><font color=black size=5>" + "Scan version" + "</font></h2>\r\n"
